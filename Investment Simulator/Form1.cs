@@ -320,10 +320,14 @@ namespace Investment_Simulator
                     }
                 }
             }
-            //Calculate the growth of each Investment
+            //Calculate the growth of each Investment and returns for DividendStocks
             foreach (Investment investment in Investments)
             {
                 investment.CalculateGrowth();
+                if (investment is DividendStock)
+                {
+                    money += ((DividendStock)investment).DividendPayout(gameTime);
+                }
             }
             //Update the shown values of the investments
             textBox2.Text = $"${Math.Round(Investments[0].GetValue(), 3)}";
