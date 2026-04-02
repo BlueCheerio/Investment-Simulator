@@ -11,6 +11,7 @@ namespace Investment_Simulator
         protected string _description;
         protected int _riskFactor;
         protected double value;
+        private double _previousValue;
         protected double upperGrowth;
         protected double lowerGrowth;
         protected double growth; //We will want to display this under the value of each stock otherwise we don't need it
@@ -45,6 +46,10 @@ namespace Investment_Simulator
         {
             return value;
         }
+        public double GetPreviousValue()
+        {
+            return _previousValue;
+        }
         public double GetGrowth()
         {
             return growth;
@@ -56,6 +61,10 @@ namespace Investment_Simulator
         public void SetNumberOfStocks(int numberofStocks)
         {
             _numberOfStocks = numberofStocks;
+        }
+        public void SetPreviousValue(double Value)
+        {
+            _previousValue = Value;
         }
 
     }

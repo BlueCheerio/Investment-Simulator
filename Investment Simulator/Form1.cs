@@ -61,6 +61,7 @@ namespace Investment_Simulator
                 "Purple Haze", "Quartz Crystal", "River Run", "Sky High", "Timber Land",
                 "Upland Park", "Velvet Touch", "White Water", "X-Factor", "Young Blood"
             };
+            //Our potential Investment types, These classes, combined with the Investment parent class and Event class make up my 8 total classes in additon to Program and Form1
             string[] InvestmentClasses = {
                 "Stock",
                 "PennyStock",
@@ -72,7 +73,7 @@ namespace Investment_Simulator
 
             for (int i = 0; i < 9; i++)
             {
-                //Create our Instances of the Investments
+                //Create our Instances of the Investments (it is randomized)
                 string classType = InvestmentClasses[generate.Next(InvestmentClasses.Length)];
                 if (classType == "Stock")
                 {
@@ -106,7 +107,7 @@ namespace Investment_Simulator
             }
 
 
-            InitializeComponent();
+            InitializeComponent(); //This sets up the Form1 display found in Form1.Designer.cs
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -131,6 +132,7 @@ namespace Investment_Simulator
             toolTip8.SetToolTip(textBox13, $"{Investments[6].GetDescription()}");
             toolTip9.SetToolTip(textBox15, $"{Investments[7].GetDescription()}");
             toolTip10.SetToolTip(textBox17, $"{Investments[8].GetDescription()}");
+            toolTip11.SetToolTip(textBox24, $"These are upcoming events, they usually happen but sometimes there is chance that they wont");
             textBox2.Text = $"${Math.Round(Investments[0].GetValue(), 3)}";
             textBox4.Text = $"${Math.Round(Investments[1].GetValue(), 3)}";
             textBox6.Text = $"${Math.Round(Investments[2].GetValue(), 3)}";
@@ -169,6 +171,7 @@ namespace Investment_Simulator
             textBox24.ReadOnly = true;
             if (Events.Count > 0)
             {
+                //This will update the warning box, ulitmately just showing no upcoming events but the same block of code is used later in the program
                 if (Events[Events.Count - 1].GetWarning())
                 {
                     if (Events[Events.Count - 1].GetGlobal())
@@ -191,7 +194,7 @@ namespace Investment_Simulator
             }
         }
 
-        //These are our select buttons, they 'select' the investment we are focusing on
+        //These are our select buttons, they 'select' the investment we are focusing on, in so doing they update the name and number of stocks text boxes
         private void button7_Click(object sender, EventArgs e)
         {
             currentSelect = 0;
@@ -254,7 +257,7 @@ namespace Investment_Simulator
             textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
-        //The Buy buttons
+        //The Buy buttons, They also update the values of the Money textbox and number of stocks textbox
         private void button1_Click(object sender, EventArgs e)
         {
             if (money >= Investments[currentSelect].GetValue())
@@ -288,7 +291,7 @@ namespace Investment_Simulator
             }
         }
 
-        //The Sell buttons
+        //The Sell buttons, They also update the values of the Money textbox and number of stocks textbox
         private void button4_Click(object sender, EventArgs e)
         {
             if (Investments[currentSelect].GetNumberOfStocks() > 0)
@@ -326,7 +329,12 @@ namespace Investment_Simulator
         private void button16_Click(object sender, EventArgs e)
         {
             gameTime += 1; //Increase the game time by 1 week
-            textBox23.Text = $"Week: {gameTime}"; 
+            textBox23.Text = $"Week: {gameTime}"; //Display gametime to Week box
+            foreach (Investment investment in Investments)
+            {
+                //Set previous values to compare to, this will help the user see what investments are growing/shrinking
+                investment.SetPreviousValue(investment.GetValue());
+            }
             if (Events.Count > 0)
             {
                 //Calculate the impact of an event based on it's chance of happening
@@ -364,6 +372,101 @@ namespace Investment_Simulator
             textBox14.Text = $"${Math.Round(Investments[6].GetValue(), 3)}";
             textBox16.Text = $"${Math.Round(Investments[7].GetValue(), 3)}";
             textBox18.Text = $"${Math.Round(Investments[8].GetValue(), 3)}";
+            //Update the growth symbol next to each investment, I'm not sure how to do this more efficiently so this is a lot of code
+            //First 3 labels
+            if (Investments[0].GetPreviousValue() < Investments[0].GetValue())
+            {
+                label1.Text = "▲";
+                label1.ForeColor = Color.Green;
+            }
+            else if (Investments[0].GetPreviousValue() > Investments[0].GetValue())
+            {
+                label1.Text = "▼";
+                label1.ForeColor = Color.Red;
+            }
+            if (Investments[1].GetPreviousValue() < Investments[1].GetValue())
+            {
+                label2.Text = "▲";
+                label2.ForeColor = Color.Green;
+            }
+            else if (Investments[1].GetPreviousValue() > Investments[1].GetValue())
+            {
+                label2.Text = "▼";
+                label2.ForeColor = Color.Red;
+            }
+            if (Investments[2].GetPreviousValue() < Investments[2].GetValue())
+            {
+                label3.Text = "▲";
+                label3.ForeColor = Color.Green;
+            }
+            else if (Investments[2].GetPreviousValue() > Investments[2].GetValue())
+            {
+                label3.Text = "▼";
+                label3.ForeColor = Color.Red;
+            }
+            //Second 3 labels
+            if (Investments[3].GetPreviousValue() < Investments[3].GetValue())
+            {
+                label4.Text = "▲";
+                label4.ForeColor = Color.Green;
+            }
+            else if (Investments[3].GetPreviousValue() > Investments[3].GetValue())
+            {
+                label4.Text = "▼";
+                label4.ForeColor = Color.Red;
+            }
+            if (Investments[4].GetPreviousValue() < Investments[4].GetValue())
+            {
+                label5.Text = "▲";
+                label5.ForeColor = Color.Green;
+            }
+            else if (Investments[4].GetPreviousValue() > Investments[4].GetValue())
+            {
+                label5.Text = "▼";
+                label5.ForeColor = Color.Red;
+            }
+            if (Investments[5].GetPreviousValue() < Investments[5].GetValue())
+            {
+                label6.Text = "▲";
+                label6.ForeColor = Color.Green;
+            }
+            else if (Investments[5].GetPreviousValue() > Investments[5].GetValue())
+            {
+                label6.Text = "▼";
+                label6.ForeColor = Color.Red;
+            }
+            //Finally 3 labels
+            if (Investments[6].GetPreviousValue() < Investments[6].GetValue())
+            {
+                label7.Text = "▲";
+                label7.ForeColor = Color.Green;
+            }
+            else if (Investments[6].GetPreviousValue() > Investments[6].GetValue())
+            {
+                label7.Text = "▼";
+                label7.ForeColor = Color.Red;
+            }
+            if (Investments[7].GetPreviousValue() < Investments[7].GetValue())
+            {
+                label8.Text = "▲";
+                label8.ForeColor = Color.Green;
+            }
+            else if (Investments[7].GetPreviousValue() > Investments[7].GetValue())
+            {
+                label8.Text = "▼";
+                label8.ForeColor = Color.Red;
+            }
+            if (Investments[8].GetPreviousValue() < Investments[8].GetValue())
+            {
+                label9.Text = "▲";
+                label9.ForeColor = Color.Green;
+            }
+            else if (Investments[8].GetPreviousValue() > Investments[8].GetValue())
+            {
+                label9.Text = "▼";
+                label9.ForeColor = Color.Red;
+            }
+
             //Create a new event
             if (generate.Next(2) == 1)
             {
