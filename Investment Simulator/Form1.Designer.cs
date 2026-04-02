@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -69,6 +70,16 @@
             textBox23 = new TextBox();
             button17 = new Button();
             textBox24 = new TextBox();
+            toolTip1 = new ToolTip(components);
+            toolTip2 = new ToolTip(components);
+            toolTip3 = new ToolTip(components);
+            toolTip4 = new ToolTip(components);
+            toolTip5 = new ToolTip(components);
+            toolTip6 = new ToolTip(components);
+            toolTip7 = new ToolTip(components);
+            toolTip8 = new ToolTip(components);
+            toolTip9 = new ToolTip(components);
+            toolTip10 = new ToolTip(components);
             SuspendLayout();
             // 
             // button1
@@ -396,9 +407,9 @@
             // 
             // button17
             // 
-            button17.Location = new Point(244, 157);
+            button17.Location = new Point(258, 160);
             button17.Name = "button17";
-            button17.Size = new Size(268, 94);
+            button17.Size = new Size(254, 126);
             button17.TabIndex = 39;
             button17.Text = "Start Game";
             button17.UseVisualStyleBackColor = true;
@@ -506,5 +517,15 @@
         private TextBox textBox23;
         private Button button17;
         private TextBox textBox24;
+        private ToolTip toolTip1;
+        private ToolTip toolTip2;
+        private ToolTip toolTip3;
+        private ToolTip toolTip4;
+        private ToolTip toolTip5;
+        private ToolTip toolTip6;
+        private ToolTip toolTip7;
+        private ToolTip toolTip8;
+        private ToolTip toolTip9;
+        private ToolTip toolTip10;
     }
 }

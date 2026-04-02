@@ -37,6 +37,10 @@ namespace Investment_Simulator
         {
             return _name;
         }
+        public string GetDescription()
+        {
+            return _description;
+        }
         public double GetValue()
         {
             return value;

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Investment_Simulator
 {
@@ -121,6 +122,15 @@ namespace Investment_Simulator
             textBox13.Text = $"{Investments[6].GetName()}";
             textBox15.Text = $"{Investments[7].GetName()}";
             textBox17.Text = $"{Investments[8].GetName()}";
+            toolTip1.SetToolTip(textBox1, $"{Investments[0].GetDescription()}");
+            toolTip3.SetToolTip(textBox3, $"{Investments[1].GetDescription()}");
+            toolTip4.SetToolTip(textBox5, $"{Investments[2].GetDescription()}");
+            toolTip5.SetToolTip(textBox7, $"{Investments[3].GetDescription()}");
+            toolTip6.SetToolTip(textBox9, $"{Investments[4].GetDescription()}");
+            toolTip7.SetToolTip(textBox11, $"{Investments[5].GetDescription()}");
+            toolTip8.SetToolTip(textBox13, $"{Investments[6].GetDescription()}");
+            toolTip9.SetToolTip(textBox15, $"{Investments[7].GetDescription()}");
+            toolTip10.SetToolTip(textBox17, $"{Investments[8].GetDescription()}");
             textBox2.Text = $"${Math.Round(Investments[0].GetValue(), 3)}";
             textBox4.Text = $"${Math.Round(Investments[1].GetValue(), 3)}";
             textBox6.Text = $"${Math.Round(Investments[2].GetValue(), 3)}";
