@@ -142,6 +142,31 @@ namespace Investment_Simulator
             textBox18.Text = $"${Math.Round(Investments[8].GetValue(), 3)}";
             textBox21.Text = $"${Math.Round(money, 3)}";
             textBox23.Text = $"Week: {gameTime}";
+            //Set all Text boxes to read only
+            textBox1.ReadOnly = true;
+            textBox2.ReadOnly = true;
+            textBox3.ReadOnly = true;
+            textBox4.ReadOnly = true;
+            textBox5.ReadOnly = true;
+            textBox6.ReadOnly = true;
+            textBox7.ReadOnly = true;
+            textBox8.ReadOnly = true;
+            textBox9.ReadOnly = true;
+            textBox10.ReadOnly = true;
+            textBox11.ReadOnly = true;
+            textBox12.ReadOnly = true;
+            textBox13.ReadOnly = true;
+            textBox14.ReadOnly = true;
+            textBox15.ReadOnly = true;
+            textBox16.ReadOnly = true;
+            textBox17.ReadOnly = true;
+            textBox18.ReadOnly = true;
+            textBox19.ReadOnly = true;
+            textBox20.ReadOnly = true;
+            textBox21.ReadOnly = true;
+            textBox22.ReadOnly = true;
+            textBox23.ReadOnly = true;
+            textBox24.ReadOnly = true;
             if (Events.Count > 0)
             {
                 if (Events[Events.Count - 1].GetWarning())

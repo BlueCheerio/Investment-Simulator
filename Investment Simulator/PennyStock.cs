@@ -20,8 +20,8 @@ namespace Investment_Simulator
 
         public override void CalculateImpact(float valueImpact, float growthImpact)
         {
-            //value can increase by 50 times at most and growth can be doubled as well
-            value += value * (valueImpact / (400 / _riskFactor));
+            //value can increase by 5 times at most and growth can be doubled as well
+            value += value * (valueImpact / (4000 / _riskFactor));
             upperGrowth += upperGrowth * (growthImpact / (20000 / _riskFactor));
             lowerGrowth += lowerGrowth * (growthImpact / (20000 / _riskFactor));
         }

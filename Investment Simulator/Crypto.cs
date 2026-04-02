@@ -19,8 +19,8 @@ namespace Investment_Simulator
 
         public override void CalculateImpact(float valueImpact, float growthImpact)
         {
-            //Value can be multiplied by 20 at most and growth is multiplied by 10 at most
-            value += value * (valueImpact / (500 / _riskFactor));
+            //Value can be multiplied by 10 at most and growth is multiplied by 10 at most
+            value += value * (valueImpact / (1000 / _riskFactor));
             upperGrowth += upperGrowth * (growthImpact / (1000 / _riskFactor));
             lowerGrowth += lowerGrowth * (growthImpact / (1000 / _riskFactor));
         }
