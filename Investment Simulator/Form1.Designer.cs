@@ -396,9 +396,9 @@
             // 
             // button17
             // 
-            button17.Location = new Point(508, 149);
+            button17.Location = new Point(244, 157);
             button17.Name = "button17";
-            button17.Size = new Size(112, 29);
+            button17.Size = new Size(268, 94);
             button17.TabIndex = 39;
             button17.Text = "Start Game";
             button17.UseVisualStyleBackColor = true;

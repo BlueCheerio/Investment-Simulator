@@ -129,7 +129,7 @@ namespace Investment_Simulator
             textBox12.Text = $"${Math.Round(Investments[5].GetValue(), 3)}";
             textBox14.Text = $"${Math.Round(Investments[6].GetValue(), 3)}";
             textBox16.Text = $"${Math.Round(Investments[7].GetValue(), 3)}";
-            textBox17.Text = $"${Math.Round(Investments[8].GetValue(), 3)}";
+            textBox18.Text = $"${Math.Round(Investments[8].GetValue(), 3)}";
             textBox21.Text = $"${Math.Round(money, 3)}";
             textBox23.Text = $"Week: {gameTime}";
             if (Events.Count > 0)
@@ -161,62 +161,62 @@ namespace Investment_Simulator
         {
             currentSelect = 0;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             currentSelect = 1;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             currentSelect = 2;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             currentSelect = 3;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
         private void button11_Click(object sender, EventArgs e)
         {
             currentSelect = 4;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             currentSelect = 5;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             currentSelect = 6;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             currentSelect = 7;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             currentSelect = 8;
             textBox20.Text = $"{Investments[currentSelect].GetName()}";
-            textBox22.Text = $"{Investments[currentSelect].GetNumberOfStocks()}";
+            textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
         }
 
         //The Buy buttons
@@ -227,6 +227,7 @@ namespace Investment_Simulator
                 Investments[currentSelect].SetNumberOfStocks(Investments[currentSelect].GetNumberOfStocks() + 1);
                 money -= Investments[currentSelect].GetValue();
                 textBox21.Text = $"${Math.Round(money, 3)}";
+                textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
             }
         }
 
@@ -237,6 +238,7 @@ namespace Investment_Simulator
                 Investments[currentSelect].SetNumberOfStocks(Investments[currentSelect].GetNumberOfStocks() + 10);
                 money -= Investments[currentSelect].GetValue() * 10;
                 textBox21.Text = $"${Math.Round(money, 3)}";
+                textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
             }
         }
 
@@ -247,6 +249,7 @@ namespace Investment_Simulator
                 Investments[currentSelect].SetNumberOfStocks(Investments[currentSelect].GetNumberOfStocks() + 100);
                 money -= Investments[currentSelect].GetValue() * 100;
                 textBox21.Text = $"${Math.Round(money, 3)}";
+                textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
             }
         }
 
@@ -258,6 +261,7 @@ namespace Investment_Simulator
                 Investments[currentSelect].SetNumberOfStocks(Investments[currentSelect].GetNumberOfStocks() - 1);
                 money += Investments[currentSelect].GetValue();
                 textBox21.Text = $"${Math.Round(money, 3)}";
+                textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
             }
         }
 
@@ -268,6 +272,7 @@ namespace Investment_Simulator
                 Investments[currentSelect].SetNumberOfStocks(Investments[currentSelect].GetNumberOfStocks() - 10);
                 money += Investments[currentSelect].GetValue() * 10;
                 textBox21.Text = $"${Math.Round(money, 3)}";
+                textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
             }
         }
 
@@ -278,6 +283,7 @@ namespace Investment_Simulator
                 Investments[currentSelect].SetNumberOfStocks(Investments[currentSelect].GetNumberOfStocks() - 100);
                 money += Investments[currentSelect].GetValue() * 100;
                 textBox21.Text = $"${Math.Round(money, 3)}";
+                textBox22.Text = $"# Stocks: {Investments[currentSelect].GetNumberOfStocks()}";
             }
         }
 
@@ -304,6 +310,11 @@ namespace Investment_Simulator
                     }
                 }
             }
+            //Calculate the growth of each Investment
+            foreach (Investment investment in Investments)
+            {
+                investment.CalculateGrowth();
+            }
             //Update the shown values of the investments
             textBox2.Text = $"${Math.Round(Investments[0].GetValue(), 3)}";
             textBox4.Text = $"${Math.Round(Investments[1].GetValue(), 3)}";
@@ -313,7 +324,7 @@ namespace Investment_Simulator
             textBox12.Text = $"${Math.Round(Investments[5].GetValue(), 3)}";
             textBox14.Text = $"${Math.Round(Investments[6].GetValue(), 3)}";
             textBox16.Text = $"${Math.Round(Investments[7].GetValue(), 3)}";
-            textBox17.Text = $"${Math.Round(Investments[8].GetValue(), 3)}";
+            textBox18.Text = $"${Math.Round(Investments[8].GetValue(), 3)}";
             //Create a new event
             if (generate.Next(2) == 1)
             {
